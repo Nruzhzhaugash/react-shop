@@ -1,0 +1,26 @@
+$xs-viewport: 599px;
+$s-viewport: 767px;
+$m-viewport: 1023px;
+$l-viewport: 1439px;
+$xl-viewport: 1919px;
+
+@media (max-width: #{$xs-viewport}) {
+  // стили для XS viewport
+}
+
+@media (max-width: #{$s-viewport}) {
+  // стили для S viewport
+}
+
+@media (max-width: #{$m-viewport}) {
+  // стили для M viewport
+}
+
+@media (max-width: #{$l-viewport}) {
+  // стили для L viewport
+}
+
+@media (max-width: #{$xl-viewport}) {
+  // стили для XL viewport
+}
+
