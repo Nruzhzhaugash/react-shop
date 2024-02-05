@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types'; 
-import { CategoriesCard } from '../../../entities/CategoriesCard';
+import { CategoriesCard } from '@/entities/CategoriesCard';
 import styles from './Category.module.scss'
 
 export const Category = ({ title, products = [], amount }) => {
@@ -10,9 +10,9 @@ export const Category = ({ title, products = [], amount }) => {
     <section className={styles.section}>
       <h2>{title}</h2>
       <div className={styles.list}>
-        {list.map(({ id, images, name }) => (
+        {list.map(({ id, image, name }) => (
           <Link to={`/categories/${id}`} key={id} className={styles.item}>
-            <CategoriesCard images={images} name={name} />  
+            <CategoriesCard image={image} name={name} />  
           </Link>
         ))}
       </div>
@@ -24,7 +24,7 @@ Category.propTypes = {
   title: PropTypes.string.isRequired, 
   products: PropTypes.arrayOf(PropTypes.shape({ 
     id: PropTypes.string.isRequired, 
-    images: PropTypes.arrayOf(PropTypes.string).isRequired, 
+    image: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired 
   })),
   amount: PropTypes.number.isRequired,

@@ -1,0 +1,13 @@
+.size {
+  padding: 4px 8px;
+  border-radius: 8px;
+  background: var(--bg);
+  cursor: pointer;
+
+  &:hover {
+    background: var(--violet);
+  }
+  &.active {
+    background: var(--violet);
+  }
+}

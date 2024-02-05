@@ -31,7 +31,6 @@ const categoriesSlice = createSlice({
     });
     builder.addCase(getCategories.rejected, (state) => {
       state.isLoading = false;
-      console.log('rejected');
     });
   },
 });

@@ -1,0 +1,28 @@
+.error_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  left: 18.7rem;
+
+  h1 {
+    font-size: 42px;
+    color: var(--ligths);
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  a {
+    margin-top: 20px;
+    font-size: 30px;
+    color: var(--lights);
+    font-weight: 500;
+    line-height: normal;
+    transition: all 0.5s ease-in-out;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

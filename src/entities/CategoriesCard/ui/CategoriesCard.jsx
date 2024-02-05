@@ -2,13 +2,13 @@ import PropTypes from 'prop-types'
 import styles from './Cart.module.scss'
 
 export const CategoriesCard = (props) => {
-  const { images, name } = props
+  const { image, name } = props
 
   return (
     <>
       <div 
         className={styles.image}
-        style={{ backgroundImage: `url(${images})` }}
+        style={{ backgroundImage: `url(${image})` }}
         loading='lazy'
       />
       <h3 className={styles.title}>{name}</h3>
@@ -17,6 +17,6 @@ export const CategoriesCard = (props) => {
 }
 
 CategoriesCard.propTypes = {
-  images: PropTypes.arrayOf(PropTypes.string),
+  image: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
 };
