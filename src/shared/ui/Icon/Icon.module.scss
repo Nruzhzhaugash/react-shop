@@ -1,0 +1,16 @@
+.icon_fav {
+  stroke: var(--grey);
+  fill: none;
+
+  &:hover {
+    stroke: var(--white);
+  }
+}
+
+.icon_cart {
+  fill: fill(--grey);
+
+  &:hover {
+    fill: var(--white);
+  }
+}
