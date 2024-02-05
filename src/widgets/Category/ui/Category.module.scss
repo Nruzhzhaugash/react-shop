@@ -1,0 +1,16 @@
+.section{
+  width: 100%;
+  padding: 22px;
+
+  .list {
+    margin-top: 24px;
+    display: flex;
+    column-gap: 20px;
+  
+    .item {
+      width: calc(100% / 5);
+      overflow: hidden;
+      text-align: center;
+    }
+  }
+}

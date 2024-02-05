@@ -9,6 +9,7 @@ export const ProductCard = (props) => {
       <div 
         className={styles.image} 
         style={{ backgroundImage: `url(${images})` }} 
+        loading='lazy'
       />
       <div className={styles.wrapper}>
         <h3 className={styles.title}>{title}</h3>
