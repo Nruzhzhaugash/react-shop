@@ -3,7 +3,9 @@
   fill: none;
 
   &:hover {
-    stroke: var(--white);
+    path {
+      stroke: var(--white);
+    }
   }
 }
 
@@ -11,6 +13,8 @@
   fill: fill(--grey);
 
   &:hover {
-    fill: var(--white);
+    path {
+      fill: var(--white);
+    }
   }
 }

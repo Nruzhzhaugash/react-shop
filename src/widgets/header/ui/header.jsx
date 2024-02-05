@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
 import styles from './header.module.scss'
-import { ROUTES } from '../../../app/appRouter'
 import { HeartIcon, IconCart, Logo, SearchIcon } from '../../../shared/ui/Icon/Icon'
 import avatar from './../../../../public/avatar.jpg'
 import { Input } from '../../../shared/ui/Input/Input'
+import { ROUTES } from '../../../app/appRouter'
 
 export const Header = () => {
   return (
@@ -37,7 +37,7 @@ export const Header = () => {
             <HeartIcon />
           </Link>
 
-          <Link to={ROUTES.CART} className={styles.cart}>
+          <Link to={ROUTES.HOME} className={styles.cart}>
             <IconCart />
             <span className={styles.count}>2</span>
           </Link>
