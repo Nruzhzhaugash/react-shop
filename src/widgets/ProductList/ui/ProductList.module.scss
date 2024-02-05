@@ -1,0 +1,18 @@
+.products {
+  width: 100%;
+  padding: 25px 22px;
+
+  .list {
+    margin-top: 24px;
+    display: flex;
+    gap: 20px;
+    // flex-wrap: wrap;
+
+    a {
+      transition: all 0.5s cubic-bezier(0.25, 0.1, 0.24, 1.03);
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+}
