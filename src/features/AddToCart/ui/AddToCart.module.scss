@@ -1,0 +1,14 @@
+.add {
+  transition: all 0.5s ease;
+
+  &:hover {
+    background: var(--light);
+    color: var(--violet);
+    transform: scale(1.02);
+  }
+}
+
+.add:disabled {
+  cursor: not-allowed;
+  background: var(--background-color);
+}

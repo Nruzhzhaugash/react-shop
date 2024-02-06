@@ -104,15 +104,6 @@
   column-gap: 10px;
 }
 
-.favourite {
-  background: var(--dark-sea);
-  border-radius: 6px;
-
-  &:hover {
-    background: #7a8690;
-  }
-}
-
 .bottom {
   display: flex;
   align-items: center;
@@ -121,9 +112,4 @@
   line-height: 12px;
   color: var(--dark-sea);
   margin-top: auto;
-}
-
-.add:disabled {
-  cursor: not-allowed;
-  background: var(--bg);
 }

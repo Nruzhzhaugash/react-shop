@@ -1,5 +1,11 @@
+import styles from './AddToFavourite.module.scss'
+import { Button } from "@/shared/ui/Button/Button"
+
 export const AddToFavourite = () => {
   return (
-    <div></div>
+    <Button 
+      label='Add to favourites' 
+      className={styles.favourite}
+    />
   )
 }

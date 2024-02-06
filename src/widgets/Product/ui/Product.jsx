@@ -3,9 +3,10 @@ import PropTypes from 'prop-types'
 
 import styles from './Product.module.scss'
 import { Size } from '@/entities/Size';
-import { Button } from '@/shared/ui/Button/Button';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '@/app/appRouter';
+import { AddToCart } from '@/features/AddToCart';
+import { AddToFavourite } from '@/features/AddToFavourite';
 
 const SIZES = [4, 4.5, 5];
 
@@ -46,8 +47,8 @@ export const Product = ({ title, price, images, description }) => {
         <p className={styles.desc}>{description}</p>
 
         <div className={styles.actions}>
-          <Button label='Add to cart' className={styles.add} />
-          <Button label='Add to favourites' className={styles.favourite} />
+          <AddToCart />
+          <AddToFavourite />
         </div>
 
         <div className={styles.bottom}>
