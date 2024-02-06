@@ -1,9 +1,11 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import { ProductList } from "@/widgets/ProductList";
 import { Poster } from "@/widgets/poster/ui/poster";
 import { Banner } from "@/widgets/Banner";
 import { Category } from "@/widgets/Category";
-import { useEffect } from "react";
+
 import { filterByPrice } from "@/shared/model/productsSlice";
 
 export const Home = () => {

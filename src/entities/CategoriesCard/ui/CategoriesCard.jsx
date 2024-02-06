@@ -17,6 +17,6 @@ export const CategoriesCard = (props) => {
 }
 
 CategoriesCard.propTypes = {
-  image: PropTypes.string.isRequired,
+  image: PropTypes.string,
   name: PropTypes.string.isRequired,
 };

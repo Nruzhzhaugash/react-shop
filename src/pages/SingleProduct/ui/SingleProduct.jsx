@@ -1,13 +1,18 @@
-import { useNavigate, useParams } from 'react-router-dom'
-// import styles from './SingleProduct.module.scss'
-import { useGetProductQuery } from '../../../shared/api/apiSlice';
 import { useEffect } from 'react';
-import { ROUTES } from '../../../app/appRouter';
-import { Product } from '../../../widgets/Product/indes';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom'
+
+import { ROUTES } from '@/app/appRouter';
+import { ProductList } from '@/widgets/ProductList/ui/ProductList';
+import { Product } from '@/widgets/Product/indes';
+import { useGetProductQuery } from '@/shared/api/apiSlice';
+import { getRelatedProducts } from '@/shared/model/productsSlice';
 
 export const SingleProduct = () => {
+  const dispatch = useDispatch()
   const { id } = useParams();
   const navigate = useNavigate();
+  const { related } = useSelector(({ products }) => products)
 
   const { data, isLoading, isFetching, isSuccess } = useGetProductQuery({ id });
 
@@ -17,11 +22,18 @@ export const SingleProduct = () => {
     }  
   }, [isLoading, isFetching, isSuccess])
 
+  useEffect(() => {
+    if(data) {
+      dispatch(getRelatedProducts(data.category.id))
+    }
+  }, [data, dispatch])
+
   return !data ? (
       <section className='preloader'>Loading...</section>
     ) : (
       <>
         <Product {...data} />
+        <ProductList products={related} amount={5} title='Related products' />
       </>
     )
 }

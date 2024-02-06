@@ -3,11 +3,12 @@ import styles from './Button.module.scss';
 import cn from 'classnames';
 
 export const Button = (props) => {
-  const { className, onClick, label } = props
+  const { className, onClick, label, disabled } = props
   return (
     <button 
       className={cn(className, styles.button, 'button')}
       onClick={onClick}
+      disabled={disabled}
     >
       {label}
     </button>
@@ -17,5 +18,6 @@ export const Button = (props) => {
 Button.propTypes = {
   className: PropTypes.string,
   onClick: PropTypes,
-  label: PropTypes.string
+  label: PropTypes.string,
+  disabled: PropTypes.bool
 };

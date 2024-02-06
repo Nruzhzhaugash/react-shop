@@ -24,8 +24,8 @@ export const ProductList = ({ title, products = [], amount, style = {} }) => {
 ProductList.propTypes = {
   title: PropTypes.string, 
   products: PropTypes.arrayOf(PropTypes.shape({ 
-    id: PropTypes.string.isRequired, 
-    images: PropTypes.arrayOf(PropTypes.string).isRequired, 
+    id: PropTypes.string, 
+    images: PropTypes.arrayOf, 
     title: PropTypes.string.isRequired, 
     category: PropTypes.shape({
       name: PropTypes.string.isRequired 

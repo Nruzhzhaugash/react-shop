@@ -11,4 +11,6 @@
 .add:disabled {
   cursor: not-allowed;
   background: var(--background-color);
+  transform: scale(1);
+  color: var(--light);
 }

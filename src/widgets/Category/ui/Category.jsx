@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types'; 
+
 import { CategoriesCard } from '@/entities/CategoriesCard';
+
 import styles from './Category.module.scss'
 
 export const Category = ({ title, products = [], amount }) => {
@@ -10,9 +12,12 @@ export const Category = ({ title, products = [], amount }) => {
     <section className={styles.section}>
       <h2>{title}</h2>
       <div className={styles.list}>
-        {list.map(({ id, image, name }) => (
+        {list.map(({ id, name, image }) => (
           <Link to={`/categories/${id}`} key={id} className={styles.item}>
-            <CategoriesCard image={image} name={name} />  
+            <CategoriesCard 
+              image={image} 
+              name={name} 
+            />  
           </Link>
         ))}
       </div>
