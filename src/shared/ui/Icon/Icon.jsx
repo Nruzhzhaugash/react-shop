@@ -68,3 +68,12 @@ export const Computer = () => {
     <img src={BG} alt="Computer" />
   )
 }
+
+export const CloseIcon = () => {
+  return (
+    <svg className='icon' xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <path d="M4.375 4.375L15.625 15.625" stroke="#576067" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M4.375 15.625L15.625 4.375" stroke="#576067" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  )
+}

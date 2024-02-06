@@ -1,0 +1,72 @@
+.wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: var(--dark);
+  width: 320px;
+  height: 100vh;
+  z-index: 99;
+  padding: 24px;
+  animation: slide-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@keyframes slide-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-3px);
+  }
+}
+
+.title {
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18px;
+  color: var(--light);
+  text-align: center;
+}
+
+.submit {
+  margin-top: 24px;
+  width: 100%;
+  font-weight: 500;
+  line-height: 20px;
+  transition: all 0.5s ease;
+
+  &:hover {
+    background: var(--light);
+    color: var(--violet)
+  }
+}
+
+.close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 9;
+  cursor: pointer;
+
+  svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--dark-sea);
+  }
+
+  &:hover {
+    stroke: var(--white);
+  }
+}
+
+.link {
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--dark-sea);
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.5s ease;
+
+  &:hover {
+    color: var(--light);
+  }
+}

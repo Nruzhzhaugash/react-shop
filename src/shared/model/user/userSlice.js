@@ -1,26 +1,34 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-// import axios from "axios";
-// import { BASE_URL } from "../api/constants";
+import axios from "axios";
 
-// export const getUser = createAsyncThunk(
-//   'categories/getCategories', 
-//   async (_, thunkAPI) => {
-//     try {
-//       const res = await axios.get(`${BASE_URL}/categories`);
-//       return res.data;
-//     } catch (err) {
-//       console.log(err);
-//       return thunkAPI.rejectWithValue(err);
-//     }
-//   }
-// );
+import { BASE_URL } from "../../api/constants";
+import { loginUser } from "@/features/authentication/login/model/login";
+
+export const createUser = createAsyncThunk(
+  'users/createUser', 
+  async (payload, thunkAPI) => {
+    try {
+      const res = await axios.post(`${BASE_URL}/users`, payload);
+      return res.data;
+    } catch (err) {
+      console.log(err);
+      return thunkAPI.rejectWithValue(err);
+    }
+  }
+);
+
+const addCurrentUser = (state, { payload }) => {
+  state.currentUser = payload;
+}
 
 const userSlice = createSlice({
   name: 'user',
   initialState: {
-    currentUser: [],
+    currentUser: null,
     cart: [],
     isLoading: false,
+    formType: 'signup',
+    showForm: false
   },
   reducers: {
     addItemToCart: (state, { payload }) => {
@@ -35,22 +43,20 @@ const userSlice = createSlice({
       } else newCart.push({ ...payload, quantity: 1 })
 
       state.cart = newCart;
+    },
+    toogleForm: (state, { payload }) => {
+      state.showForm = payload;
+    },
+    toogleFormType: (state, { payload }) => {
+      state.formType = payload;
     }
   },
   extraReducers: (builder) => {
-    // builder.addCase(getUser.pending, (state) => {
-    //   state.isLoading = true;
-    // });
-    // builder.addCase(getUser.fulfilled, (state, { payload }) => {
-    //   state.list = payload;
-    //   state.isLoading = false;
-    // });
-    // builder.addCase(getUser.rejected, (state) => {
-    //   state.isLoading = false;
-    // });
+    builder.addCase(createUser.fulfilled, addCurrentUser);
+    builder.addCase(loginUser.fulfilled, addCurrentUser);
   },
 });
 
-export const { addItemToCart } = userSlice.actions;
+export const { addItemToCart, toogleForm, toogleFormType } = userSlice.actions;
 
 export default userSlice.reducer;
