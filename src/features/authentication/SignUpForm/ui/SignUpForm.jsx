@@ -1,35 +1,34 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 
-import { createUser } from '@/shared/model/user/userSlice'
-import { Button } from '@/shared/ui/Button/Button'
 import { CloseIcon } from '@/shared/ui/Icon/Icon'
 import { UserForm } from '@/widgets/Form/ui/form'
+import { createUser } from '../model/signup'
 
 import styles from './SignUpForm.module.scss'
 
 export const SignUpForm = ({ toogleCurrentFormType, closeForm }) => {
   const dispatch = useDispatch();
   const [values, setValues] = useState({
-    email: '',
     name: '',
+    email: '',
     password: '',
     avatar: ''
-  });
+  })
 
-  const handleChange = ({ target: { value, name } }) => {
-    setValues({ ...values, [name]: value });
-  };
+  const handleChange = ({ target: {value, name} }) => {
+    setValues({ ...values, [name]: value })
+  }
 
-  const handleSumbit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    const isEmpty = Object.values(values).every(val => val);
+    const isNotEmpty = Object.values(values).every((val) => val);
 
-    if (isEmpty) return;
+    if(!isNotEmpty) return;
     dispatch(createUser(values));
     closeForm();
-  }
+  } 
 
   return (
     <div className={styles.wrapper}>
@@ -41,7 +40,7 @@ export const SignUpForm = ({ toogleCurrentFormType, closeForm }) => {
         Sign Up
       </div>
 
-      <UserForm values={values} onChange={handleChange} onSubmit={handleSumbit} />
+      <UserForm values={values} onChange={handleChange} onSubmit={handleSubmit} />
 
       <div 
         className={styles.link}
@@ -49,8 +48,6 @@ export const SignUpForm = ({ toogleCurrentFormType, closeForm }) => {
       >
         I already have an account
       </div>
-
-      <Button label='Create an account' className={styles.submit} type='submit' />
     </div>
   )
 }

@@ -2,11 +2,10 @@ import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 
 import { loginUser } from '../model/login'
-import { Button } from '@/shared/ui/Button/Button'
 import { CloseIcon } from '@/shared/ui/Icon/Icon'
-import { UserForm } from '@/widgets/Form/ui/form'
 
 import styles from './LoginForm.module.scss'
+import { UserForm } from '../../../../widgets/Form/ui/form'
 
 export const LoginForm = ({ toogleCurrentFormType, closeForm }) => {
   const dispatch = useDispatch();
@@ -22,9 +21,9 @@ export const LoginForm = ({ toogleCurrentFormType, closeForm }) => {
   const handleSumbit = (e) => {
     e.preventDefault();
 
-    const isEmpty = Object.values(values).every(val => val);
+    const isNotEmpty = Object.values(values).every(val => val);
 
-    if (isEmpty) return;
+    if (!isNotEmpty) return;
     dispatch(loginUser(values));
     closeForm();
   }
@@ -46,7 +45,6 @@ export const LoginForm = ({ toogleCurrentFormType, closeForm }) => {
         Create have an account
       </div>
 
-      <Button label='Login' className={styles.submit} type='submit' />
     </div>
   )
 }

@@ -17,7 +17,7 @@ export const UserForm = () => {
   return showForm ? (
     <>
       <div className={styles.overlay} onClick={closeForm} />
-      {formType === 'signup' ? (
+      {formType === "signup" ? (
         <SignUpForm toogleCurrentFormType={toogleCurrentFormType} closeForm={closeForm} /> 
       ) : (
         <LoginForm toogleCurrentFormType={toogleCurrentFormType} closeForm={closeForm} />

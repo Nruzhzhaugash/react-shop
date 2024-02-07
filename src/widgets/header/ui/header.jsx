@@ -1,4 +1,5 @@
-import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { ROUTES } from '@/app/appRouter'
@@ -8,10 +9,11 @@ import { HeartIcon, IconCart, Logo, SearchIcon } from '@/shared/ui/Icon/Icon'
 
 import styles from './header.module.scss'
 import AVATAR from '../../../../public/avatar.jpg'
-import { useEffect, useState } from 'react'
 
 export const Header = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const { currentUser } = useSelector(({ user }) => user);
   const [values, setValues] = useState({ name: 'Sign Up', avatar: AVATAR })
 
@@ -23,6 +25,7 @@ export const Header = () => {
 
   const handleClick = () => {
     if(!currentUser) dispatch(toogleForm(true));
+    else navigate(ROUTES.PROFILE);
   }
 
   return (

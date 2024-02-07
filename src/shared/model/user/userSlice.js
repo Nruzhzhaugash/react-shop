@@ -1,34 +1,28 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-import axios from "axios";
+import { createSlice } from "@reduxjs/toolkit"
 
-import { BASE_URL } from "../../api/constants";
 import { loginUser } from "@/features/authentication/login/model/login";
-
-export const createUser = createAsyncThunk(
-  'users/createUser', 
-  async (payload, thunkAPI) => {
-    try {
-      const res = await axios.post(`${BASE_URL}/users`, payload);
-      return res.data;
-    } catch (err) {
-      console.log(err);
-      return thunkAPI.rejectWithValue(err);
-    }
-  }
-);
+import { updateUser } from "@/widgets/Profile/model/updateUser";
+import { createUser } from "@/features/authentication/SignUpForm/model/signup";
 
 const addCurrentUser = (state, { payload }) => {
-  state.currentUser = payload;
-}
+  if (payload instanceof Error) {
+    // Если payload - объект ошибки, сохраняем только текст ошибки
+    state.error = payload.message;
+  } else {
+    // Иначе сохраняем payload как обычное значение
+    state.currentUser = payload;
+  }
+};
 
 const userSlice = createSlice({
-  name: 'user',
+  name: "user",
   initialState: {
     currentUser: null,
     cart: [],
     isLoading: false,
-    formType: 'signup',
-    showForm: false
+    formType: "signup",
+    showForm: false,
+    error: null
   },
   reducers: {
     addItemToCart: (state, { payload }) => {
@@ -54,6 +48,7 @@ const userSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(createUser.fulfilled, addCurrentUser);
     builder.addCase(loginUser.fulfilled, addCurrentUser);
+    builder.addCase(updateUser.fulfilled, addCurrentUser);
   },
 });
 

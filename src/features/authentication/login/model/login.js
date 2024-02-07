@@ -1,5 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+
 import axios from "axios";
+
 import { BASE_URL } from "@/shared/api/constants";
 
 export const loginUser = createAsyncThunk(
@@ -7,7 +9,7 @@ export const loginUser = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const res = await axios.post(`${BASE_URL}/auth/login`, payload);
-      const login = await axios(`${BASE_URL}/auth/profile`, {
+      const login = await axios.get(`${BASE_URL}/auth/profile`, {
         headers: {
           "Authorization": `Bearer ${res.data.access_token}`
         }
@@ -19,4 +21,3 @@ export const loginUser = createAsyncThunk(
     }
   }
 );
-
