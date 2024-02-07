@@ -3,9 +3,11 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { ROUTES } from '@/app/appRouter'
-import { Input } from '@/shared/ui/Input/Input'
 import { toogleForm } from '@/shared/model/user/userSlice'
-import { HeartIcon, IconCart, Logo, SearchIcon } from '@/shared/ui/Icon/Icon'
+import { HeartIcon, IconCart, Logo} from '@/shared/ui/Icon/Icon'
+import { useGetProductsQuery } from '@/shared/api/apiSlice'
+import { Dropdown } from '@/features/dropdown'
+import { Search } from '@/features/Search'
 
 import styles from './header.module.scss'
 import AVATAR from '../../../../public/avatar.jpg'
@@ -14,7 +16,9 @@ export const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const [searchValues, setSearchValues] = useState('');
   const { currentUser } = useSelector(({ user }) => user);
+  const { data, isLoading } = useGetProductsQuery({ title: searchValues })
   const [values, setValues] = useState({ name: 'Sign Up', avatar: AVATAR })
 
   useEffect(() => {
@@ -22,6 +26,10 @@ export const Header = () => {
 
     setValues(currentUser)
   }, [currentUser])
+
+  const handleChange = ({ target: { value } }) => {
+    setSearchValues(value)
+  }
 
   const handleClick = () => {
     if(!currentUser) dispatch(toogleForm(true));
@@ -45,14 +53,23 @@ export const Header = () => {
           <div className={styles.username}>{values.name}</div>
         </div>
 
-        <form className={styles.form}>
-          <div className={styles.icon}>
-            <SearchIcon />
-          </div>
-          <div className={styles.input_inp}>
-            <Input type='search' name='search' placeholder='Search for anything...' value={''}/>
-          </div>
-        </form>
+        <Search value={searchValues} onChange={handleChange} >
+          {searchValues && (
+            <div className={styles.box}>
+              {isLoading 
+                ? "Loading..."
+                : !data.length
+                ? 'No results'
+                : data.map(({ title, images, id }) => {
+                  return (
+                    <Dropdown onClick={() => setSearchValues('')} title={title} images={images[0]} key={id} />                  
+                  );
+                })}
+            </div>
+          )}
+        </Search>
+
+        
 
         <div className={styles.account}>
           <Link to={ROUTES.HOME} className={styles.favourites}>
