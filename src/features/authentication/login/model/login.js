@@ -11,7 +11,7 @@ export const loginUser = createAsyncThunk(
       const res = await axios.post(`${BASE_URL}/auth/login`, payload);
       const login = await axios.get(`${BASE_URL}/auth/profile`, {
         headers: {
-          "Authorization": `Bearer ${res.data.access_token}`
+          Authorization: `Bearer ${res.data.access_token}`,
         }
       });
       return login.data;
