@@ -2,15 +2,16 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types'; 
 import styles from './ProductList.module.scss';
 import { ProductCard } from '../../../entities/ProductCard';
+import cn from 'classnames';
 
-export const ProductList = ({ title, products = [], amount, style = {} }) => {
+export const ProductList = ({ title, products = [], amount, style = {}, className }) => {
   const list = products.filter((_, i) => i < amount);
 
   return (
     <section className={styles.products} style={style}>
       {title && <h2>{title}</h2>}
 
-      <div className={styles.list}>
+      <div className={cn(className, styles.list, 'list')}>
         {list.map(({ id, images, title, category: { name: cat }, price }) =>(
           <Link to={`/products/${id}`} key={id} className={styles.product}>
             <ProductCard images={images[0]} price={price} title={title} cat={cat}/>
@@ -33,6 +34,7 @@ ProductList.propTypes = {
     price: PropTypes.number.isRequired, 
   })),
   amount: PropTypes.number,
-  style: PropTypes.object 
+  style: PropTypes.object,
+  className: PropTypes.string 
 }
 

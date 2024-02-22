@@ -1,16 +1,21 @@
-.section{
+.wrapper {
   width: 100%;
-  padding: 22px;
+  padding: 24px;
+  flex-grow: 1;
+}
 
-  .list {
-    margin-top: 24px;
-    display: flex;
-    column-gap: 20px;
-  
-    .item {
-      width: calc(100% / 5);
-      overflow: hidden;
-      text-align: center;
-    }
-  }
+.full {
+  width: 100%;
+}
+
+.more {
+  margin: 32px auto 0 auto;
+  text-align: center;
+}
+
+.back {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 24px;
 }

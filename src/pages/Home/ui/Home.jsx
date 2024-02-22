@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { ProductList } from "@/widgets/ProductList";
 import { Poster } from "@/widgets/poster/ui/poster";
 import { Banner } from "@/widgets/Banner";
-import { Category } from "@/widgets/Category";
+import { Categories } from "@/widgets/Categories/ui/Category";
 
 import { filterByPrice } from "@/shared/model/productsSlice";
 
@@ -25,7 +25,7 @@ export const Home = () => {
     <>
       <Poster />
       <ProductList products={list} amount={5} title='Trending'/>
-      <Category products={categories.list} amount={5} title='Worth seeing'/>
+      <Categories products={categories.list} amount={5} title='Worth seeing'/>
       <Banner />
       <ProductList products={filtered} amount={5} title='Less than 100$' />
     </>
